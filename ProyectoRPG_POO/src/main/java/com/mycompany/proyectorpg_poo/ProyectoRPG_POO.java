@@ -12,6 +12,6 @@ package com.mycompany.proyectorpg_poo;
 public class ProyectoRPG_POO {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        System.out.println("Hola mundo");
     }
 }
