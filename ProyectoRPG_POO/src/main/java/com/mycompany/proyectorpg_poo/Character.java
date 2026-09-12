@@ -2,7 +2,6 @@
  * Se define a los personajes
  * @author LeoMija
  */
-
 package com.mycompany.proyectorpg_poo;
 
 public abstract class Character {

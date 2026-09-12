@@ -1,13 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ *
+ * @author LeoMija
  */
 package com.mycompany.proyectorpg_poo;
 
-/**
- *
- * @author a23216396
- */
 public class Warrior extends Character {
 
     @Override
