@@ -31,10 +31,8 @@ public abstract class Character {
     
     public boolean isAlive() {
         // falta definir comportamiento
-        if (health>0) {
-            return true; // si su salud es mayor a 0 está vivo
-        } else
-        return false; // de lo contrario está muerto
+        return health>0; // si su salud es mayor a 0 está vivo
+        // de lo contrario está muerto
     }
 
     // modificamos un toString() para que liste los stats

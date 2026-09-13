@@ -6,9 +6,15 @@ package com.mycompany.proyectorpg_poo;
 
 public class Warrior extends Character {
 
+    /*
+Utiliza armas de combate cuerpo a cuerpo.
+Tiene una mayor capacidad de defensa.
+Puede realizar ataques físicos.
+    */
+    
     @Override
-    void attack(Character target) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void attack(Character target) {
+        
     }
 
     @Override
