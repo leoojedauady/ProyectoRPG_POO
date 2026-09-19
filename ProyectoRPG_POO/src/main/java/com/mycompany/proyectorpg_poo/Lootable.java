@@ -9,6 +9,10 @@ package com.mycompany.proyectorpg_poo;
  * @author LeoMija
  */
 public interface Lootable {
+    void receiveItem(Item item);
+    void receiveGold(int amount);
+
+    
     /*
     Métodos posibles:
 • receiveItem(Item item)

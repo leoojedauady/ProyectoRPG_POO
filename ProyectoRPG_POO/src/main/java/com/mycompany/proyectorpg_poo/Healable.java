@@ -9,6 +9,7 @@ package com.mycompany.proyectorpg_poo;
  * @author leojeda
  */
 public interface Healable {
+    void heal(Character target);
     /*
     heal(Character target)
     */

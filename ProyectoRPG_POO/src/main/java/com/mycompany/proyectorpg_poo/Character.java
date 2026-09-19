@@ -4,115 +4,98 @@
  */
 package com.mycompany.proyectorpg_poo;
 
-public abstract class Character {
-    private String name;
-    private int level;
-    private int health;
-    private int maxHealth;
-    private Inventory inventory;
-    private int experience;
-    private int strength;
-    private int defense;
-    private int status;
 
-    // constructor de character    
-    
-    
-    // métodos del character
-    abstract void attack(Character target);
-    // falta definir comportamiento
+public abstract class Character implements Lootable {
+    protected String name;
+    protected int level;
+    protected int health;
+    protected int maxHealth;
+    protected int strength;
+    protected int defense;
+    protected int experience;
+    protected Inventory inventory;
+
+    public Character(String name, int level, int maxHealth,
+                     int strength, int defense) {
+        this.name = name;
+        this.level = level;
+        this.health = maxHealth;
+        this.maxHealth = maxHealth;
+        this.strength = strength;
+        this.defense = defense;
+        this.experience = 0;
+
+        // COMPOSICIÓN: el inventario pertenece al personaje
+        this.inventory = new Inventory(20, 100.0);
+    }
+
+    public abstract void attack(Character target);
 
     public abstract void defend(int damage);
-    // falta definir comportamiento
 
     public void levelUp() {
-        System.out.println("Has subido de nivel");
+        level++;
+        maxHealth += 20;
+        health = maxHealth;
+        strength += 5;
+        defense += 3;
+
+        System.out.println(name + " subió al nivel " + level);
     }
-    
+
     public boolean isAlive() {
-        // falta definir comportamiento
-        return health>0; // si su salud es mayor a 0 está vivo
-        // de lo contrario está muerto
+        return health > 0;
     }
 
-    // modificamos un toString() para que liste los stats
-    public String showStats() {
-        return "Character{" + "name=" + name + ", level=" + level + ", health=" + health + ", maxHealth=" + maxHealth + ", inventory=" + inventory + ", experience=" + experience + ", strength=" + strength + ", defense=" + defense + ", status=" + status + '}';
+    public void receiveDamage(int damage) {
+        int finalDamage = Math.max(0, damage - defense);
+        health -= finalDamage;
+        health = Math.max(health, 0);
+
+        System.out.println(name + " recibió " + finalDamage +
+                " de daño. Vida: " + health + "/" + maxHealth);
     }
 
-    public String getName() {
-        return name;
+    public void healHealth(int amount) {
+        health += amount;
+        health = Math.min(health, maxHealth);
+
+        System.out.println(name + " recuperó " + amount +
+                " de vida. Vida: " + health + "/" + maxHealth);
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
-    public int getHealth() {
-        return health;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
-    public int getMaxHealth() {
-        return maxHealth;
-    }
-
-    public void setMaxHealth(int maxHealth) {
-        this.maxHealth = maxHealth;
+    public void showStats() {
+        System.out.println("\n--- " + name + " ---");
+        System.out.println("Nivel: " + level);
+        System.out.println("Vida: " + health + "/" + maxHealth);
+        System.out.println("Fuerza: " + strength);
+        System.out.println("Defensa: " + defense);
+        System.out.println("Experiencia: " + experience);
     }
 
     public Inventory getInventory() {
         return inventory;
     }
 
-    public void setInventory(Inventory inventory) {
-        this.inventory = inventory;
-    }
-
-    public int getExperience() {
-        return experience;
-    }
-
-    public void setExperience(int experience) {
-        this.experience = experience;
+    public String getName() {
+        return name;
     }
 
     public int getStrength() {
         return strength;
     }
 
-    public void setStrength(int strength) {
-        this.strength = strength;
-    }
-
     public int getDefense() {
         return defense;
     }
 
-    public void setDefense(int defense) {
-        this.defense = defense;
+    @Override
+    public void receiveItem(Item item) {
+        inventory.addItem(item);
     }
 
-    public int getStatus() {
-        return status;
+    @Override
+    public void receiveGold(int amount) {
+        inventory.addGold(amount);
     }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-    
-    
-    
-    
 }

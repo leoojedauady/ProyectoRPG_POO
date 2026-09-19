@@ -4,37 +4,49 @@
  */
 package com.mycompany.proyectorpg_poo;
 
-public class Mage extends Character {
+public class Mage extends Character implements MagicCaster {
 
-    int mana, maxMana;
-    
-    //constructor del Mage
+    private int mana;
+    private int maxMana;
 
-    public Mage(int maxMana) {
+    public Mage(String name) {
+        super(name, 1, 100, 10, 5);
+        this.maxMana = 120;
         this.mana = maxMana;
-        this.maxMana = maxMana;
     }
-    
-    
-    //métodos especiales del Mage
-    public void castSpell(Character target) {
-        
-    }
-    
-    public void restoreMana() {
-        mana = maxMana;
-        System.out.println("Se ha restaurado el mana al nivel maximo: " + mana + "/" + maxMana);
-    }
-    
-    // métodos de ataque y defensa
+
     @Override
     public void attack(Character target) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (hasMana()) {
+            castSpell(target);
+        } else {
+            System.out.println(name + " no tiene suficiente maná.");
+        }
+    }
+
+    @Override
+    public void castSpell(Character target) {
+        if (mana >= 20) {
+            int damage = strength + 30;
+            mana -= 20;
+
+            System.out.println(name + " lanza una bola de fuego.");
+            target.receiveDamage(damage);
+        }
+    }
+
+    @Override
+    public boolean hasMana() {
+        return mana >= 20;
+    }
+
+    public void restoreMana() {
+        mana = maxMana;
+        System.out.println(name + " restauró su maná.");
     }
 
     @Override
     public void defend(int damage) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        receiveDamage(damage);
     }
-    
 }

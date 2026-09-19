@@ -4,26 +4,28 @@
  */
 package com.mycompany.proyectorpg_poo;
 
-public class Priest extends Character {
-    
-    private int healFactor;
-    //método
-    public void heal(Character target) {
-        //checamos si al curar no nos estamos pasando del maxHealth del target
-        if ((target.getHealth() + healFactor)<=target.getMaxHealth()) {
-            target.setHealth(target.getHealth() + healFactor);
-        } else { //si se pasa, simplemente el priest va a curar hasta maxHealth
-            target.setHealth(target.getMaxHealth());
-        }
+public class Priest extends Character implements Healable {
+
+    public Priest(String name) {
+        super(name, 1, 100, 8, 8);
     }
 
     @Override
-    void attack(Character target) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void attack(Character target) {
+        System.out.println(name + " realiza un ataque sagrado.");
+        target.receiveDamage(strength + 8);
     }
 
     @Override
     public void defend(int damage) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        receiveDamage(damage);
+    }
+
+    @Override
+    public void heal(Character target) {
+        int healing = 30;
+
+        System.out.println(name + " cura a " + target.getName());
+        target.healHealth(healing);
     }
 }
