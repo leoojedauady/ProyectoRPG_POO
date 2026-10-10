@@ -6,7 +6,7 @@ package com.mycompany.proyectorpg_poo;
 
 /**
  *
- * @author LeoMija
+ * @author LeoMija2
  */
 import java.util.ArrayList;
 import java.util.List;
