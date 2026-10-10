@@ -4,14 +4,15 @@
  */
 package com.mycompany.proyectorpg_poo;
 
-
 public interface MagicCaster {
-    void castSpell(Character target);
-    boolean hasMana();
     
-    /* 
-    Métodos posibles:
-• castSpell(Character target)
-• hasMana()
-    */
+    /**
+     * Lanza un hechizo sobre un objetivo.
+     * 
+     * @param target Personaje objetivo del hechizo.
+     * @throws InvalidCharacterStateException Si el lanzador o el objetivo están muertos.
+     */
+    void castSpell(Character target) throws InvalidCharacterStateException;
+
+    boolean hasMana();
 }

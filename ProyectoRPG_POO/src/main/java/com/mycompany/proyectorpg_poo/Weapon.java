@@ -24,12 +24,31 @@ public class Weapon extends Item {
     }
 
     @Override
-    public void use(Character character) {
+    public void use(Character character) throws InvalidCharacterStateException {
+        if (character == null) {
+            throw new InvalidCharacterStateException("No se puede usar el arma sin un personaje objetivo.");
+        }
+        if (!character.isAlive()) {
+            throw new InvalidCharacterStateException("El personaje " + character.getName() + " está muerto y no puede usar el arma.");
+        }
+
         System.out.println(character.getName() +
                 " utiliza el arma " + name);
     }
 
     public int calculateDamage() {
         return damage;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public int getDurability() {
+        return durability;
+    }
+
+    public String getWeaponType() {
+        return weaponType;
     }
 }

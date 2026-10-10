@@ -24,12 +24,31 @@ public class Armor extends Item {
     }
 
     @Override
-    public void use(Character character) {
+    public void use(Character character) throws InvalidCharacterStateException {
+        if (character == null) {
+            throw new InvalidCharacterStateException("No se puede equipar la armadura sin un personaje objetivo.");
+        }
+        if (!character.isAlive()) {
+            throw new InvalidCharacterStateException("El personaje " + character.getName() + " está muerto y no puede equipar la armadura.");
+        }
+
         System.out.println(character.getName() +
                 " equipa " + name);
     }
 
     public int calculateDefense() {
         return defense;
+    }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public int getDurability() {
+        return durability;
+    }
+
+    public String getArmorType() {
+        return armorType;
     }
 }

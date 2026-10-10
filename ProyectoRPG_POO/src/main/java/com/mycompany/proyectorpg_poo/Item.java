@@ -25,7 +25,7 @@ public abstract class Item {
         this.value = value;
     }
 
-    public abstract void use(Character character);
+    public abstract void use(Character character) throws InvalidCharacterStateException;
 
     public void showInfo() {
         System.out.println(

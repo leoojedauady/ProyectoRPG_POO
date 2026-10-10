@@ -16,7 +16,14 @@ public class Mage extends Character implements MagicCaster {
     }
 
     @Override
-    public void attack(Character target) {
+    public void attack(Character target) throws InvalidCharacterStateException {
+        if (!isAlive()) {
+            throw new InvalidCharacterStateException("El mago " + name + " no puede atacar porque está muerto.");
+        }
+        if (target != null && !target.isAlive()) {
+            throw new InvalidCharacterStateException("No se puede atacar a " + target.getName() + " porque ya está muerto.");
+        }
+
         if (hasMana()) {
             castSpell(target);
         } else {
@@ -25,13 +32,19 @@ public class Mage extends Character implements MagicCaster {
     }
 
     @Override
-    public void castSpell(Character target) {
+    public void castSpell(Character target) throws InvalidCharacterStateException {
+        if (!isAlive()) {
+            throw new InvalidCharacterStateException("El mago " + name + " no puede lanzar hechizos porque está muerto.");
+        }
+
         if (mana >= 20) {
             int damage = strength + 30;
             mana -= 20;
 
             System.out.println(name + " lanza una bola de fuego.");
-            target.receiveDamage(damage);
+            if (target != null) {
+                target.receiveDamage(damage);
+            }
         }
     }
 
@@ -46,7 +59,7 @@ public class Mage extends Character implements MagicCaster {
     }
 
     @Override
-    public void defend(int damage) {
+    public void defend(int damage) throws InvalidCharacterStateException {
         receiveDamage(damage);
     }
 }

@@ -18,7 +18,14 @@ public class Warrior extends Character {
     }
 
     @Override
-    public void attack(Character target) {
+    public void attack(Character target) throws InvalidCharacterStateException {
+        if (!isAlive()) {
+            throw new InvalidCharacterStateException("El guerrero " + name + " no puede atacar porque está muerto.");
+        }
+        if (target != null && !target.isAlive()) {
+            throw new InvalidCharacterStateException("No se puede atacar a " + target.getName() + " porque ya está muerto.");
+        }
+
         int damage = strength;
 
         if (weapon != null) {
@@ -26,11 +33,17 @@ public class Warrior extends Character {
         }
 
         System.out.println(name + " ataca con fuerza.");
-        target.receiveDamage(damage);
+        if (target != null) {
+            target.receiveDamage(damage);
+        }
     }
 
     @Override
-    public void defend(int damage) {
+    public void defend(int damage) throws InvalidCharacterStateException {
         receiveDamage(damage);
+    }
+
+    public Weapon getWeapon() {
+        return weapon;
     }
 }

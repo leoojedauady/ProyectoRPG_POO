@@ -4,7 +4,6 @@
  */
 package com.mycompany.proyectorpg_poo;
 
-
 public abstract class Character implements Lootable {
     protected String name;
     protected int level;
@@ -29,9 +28,15 @@ public abstract class Character implements Lootable {
         this.inventory = new Inventory(20, 100.0);
     }
 
-    public abstract void attack(Character target);
+    /**
+     * Realiza un ataque a otro personaje.
+     * 
+     * @param target Personaje objetivo.
+     * @throws InvalidCharacterStateException Si el atacante o el objetivo está muerto.
+     */
+    public abstract void attack(Character target) throws InvalidCharacterStateException;
 
-    public abstract void defend(int damage);
+    public abstract void defend(int damage) throws InvalidCharacterStateException;
 
     public void levelUp() {
         level++;
@@ -47,7 +52,17 @@ public abstract class Character implements Lootable {
         return health > 0;
     }
 
-    public void receiveDamage(int damage) {
+    /**
+     * Recibe una cantidad de daño.
+     * 
+     * @param damage Cantidad de daño a infligir.
+     * @throws InvalidCharacterStateException Si el personaje ya está muerto.
+     */
+    public void receiveDamage(int damage) throws InvalidCharacterStateException {
+        if (!isAlive()) {
+            throw new InvalidCharacterStateException("El personaje '" + name + "' ya está muerto y no puede recibir más daño.");
+        }
+
         int finalDamage = Math.max(0, damage - defense);
         health -= finalDamage;
         health = Math.max(health, 0);
@@ -56,7 +71,20 @@ public abstract class Character implements Lootable {
                 " de daño. Vida: " + health + "/" + maxHealth);
     }
 
-    public void healHealth(int amount) {
+    /**
+     * Cura vida al personaje.
+     * 
+     * @param amount Cantidad de salud a recuperar.
+     * @throws InvalidCharacterStateException Si el personaje está muerto o la cantidad es inválida.
+     */
+    public void healHealth(int amount) throws InvalidCharacterStateException {
+        if (!isAlive()) {
+            throw new InvalidCharacterStateException("No se puede curar a '" + name + "' porque está muerto.");
+        }
+        if (amount <= 0) {
+            throw new InvalidCharacterStateException("La cantidad de curación debe ser mayor a 0.");
+        }
+
         health += amount;
         health = Math.min(health, maxHealth);
 
@@ -81,6 +109,14 @@ public abstract class Character implements Lootable {
         return name;
     }
 
+    public int getHealth() {
+        return health;
+    }
+
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+
     public int getStrength() {
         return strength;
     }
@@ -90,7 +126,7 @@ public abstract class Character implements Lootable {
     }
 
     @Override
-    public void receiveItem(Item item) {
+    public void receiveItem(Item item) throws InventoryFullException {
         inventory.addItem(item);
     }
 

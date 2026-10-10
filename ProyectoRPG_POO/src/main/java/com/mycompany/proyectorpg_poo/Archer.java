@@ -21,12 +21,19 @@ public class Archer extends Character implements RangedAttacker {
     }
 
     @Override
-    public void attack(Character target) {
+    public void attack(Character target) throws InvalidCharacterStateException {
         rangedAttack(target);
     }
 
     @Override
-    public void rangedAttack(Character target) {
+    public void rangedAttack(Character target) throws InvalidCharacterStateException {
+        if (!isAlive()) {
+            throw new InvalidCharacterStateException("El arquero " + name + " no puede atacar porque está muerto.");
+        }
+        if (target != null && !target.isAlive()) {
+            throw new InvalidCharacterStateException("No se puede atacar a " + target.getName() + " porque ya está muerto.");
+        }
+
         if (!hasAmmunition()) {
             System.out.println(name + " no tiene flechas.");
             return;
@@ -37,7 +44,9 @@ public class Archer extends Character implements RangedAttacker {
         System.out.println(name + " dispara una flecha desde " +
                 range + " metros.");
 
-        target.receiveDamage(strength + 10);
+        if (target != null) {
+            target.receiveDamage(strength + 10);
+        }
     }
 
     @Override
@@ -51,7 +60,7 @@ public class Archer extends Character implements RangedAttacker {
     }
 
     @Override
-    public void defend(int damage) {
+    public void defend(int damage) throws InvalidCharacterStateException {
         receiveDamage(damage);
     }
 }

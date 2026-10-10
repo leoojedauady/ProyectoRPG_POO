@@ -1,160 +1,92 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.proyectorpg_poo;
-
-/**
- *
- * @author LeoMija2
- */
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
+        System.out.println("==========================================");
+        System.out.println("   DEMOSTRACION DE MEJORAS DEL RPG (ADA 02)");
+        System.out.println("==========================================\n");
 
-        System.out.println("===== RPG OOP =====");
+        // 1. DEMOSTRACIÓN DE REPOSITORIO GENÉRICO Y EXCEPCIONES EN INVENTARIO
+        System.out.println("--- 1. Prueba de Inventario y Repository<Item> ---");
+        // Inventario con capacidad para 2 ítems y peso máximo de 10.0
+        Inventory inventory = new Inventory(2, 10.0);
 
-        // CREACIÓN DE PERSONAJES
-        Warrior warrior = new Warrior("Arthas");
-        Mage mage = new Mage("Merlín");
-        Archer archer = new Archer("Legolas");
-        Priest priest = new Priest("Anduin");
+        try {
+            // Se pasan los 6 parámetros requeridos: id, name, weight, value, damage/defense, type
+            Weapon espada = new Weapon(1, "Espada de Hierro", 3.0, 50, 15, "Espada");
+            Potion pocion = new Potion(2, "Pocion de Vida", 20, "health", 30);
+            Armor armadura = new Armor(3, "Peto de Acero", 5.0, 100, 20, "Pesada");
 
-        // CREACIÓN DE OBJETOS
-        Weapon sword = new Weapon(
-                1, "Espada Legendaria", 5, 500, 35, "Espada"
-        );
+            System.out.println("agregando primer objeto...");
+            inventory.addItem(espada);
 
-        Armor armor = new Armor(
-                2, "Armadura de Acero", 10, 800, 20, "Pesada"
-        );
+            System.out.println("agregando segundo objeto...");
+            inventory.addItem(pocion);
 
-        Potion potion = new Potion(
-                3, "Poción de Vida", 100, "health", 40
-        );
+            System.out.println("intentando agregar tercer objeto (debe lanzar InventoryFullException)...");
+            inventory.addItem(armadura); // Esto genera la excepción por capacidad máxima
 
-        Accessory ring = new Accessory(
-                4, "Anillo de Poder", 300,
-                10, 0, 5, 2
-        );
-
-        Consumable food = new Consumable(
-                5, "Pan", 10, "Recupera energía"
-        );
-
-        // INVENTARIOS
-        warrior.receiveItem(sword);
-        warrior.receiveItem(armor);
-        mage.receiveItem(potion);
-        archer.receiveItem(ring);
-        priest.receiveItem(food);
-
-        // COMPOSICIÓN
-        System.out.println("\n=== COMPOSICIÓN ===");
-        warrior.getInventory().showItems();
-
-        // EQUIPAMIENTO
-        warrior.equipWeapon(sword);
-        armor.use(warrior);
-
-        // POLIMORFISMO DE PERSONAJES
-        System.out.println("\n=== POLIMORFISMO DE PERSONAJES ===");
-
-        List<Character> characters = new ArrayList<>();
-
-        characters.add(warrior);
-        characters.add(mage);
-        characters.add(archer);
-        characters.add(priest);
-
-        for (Character character : characters) {
-            character.showStats();
+        } catch (InventoryFullException e) {
+            System.out.println("[excepcion]: " + e.getMessage());
         }
 
-        // ATAQUES
-        System.out.println("\n=== ATAQUES ===");
-
-        for (Character character : characters) {
-            character.attack(warrior);
+        try {
+            System.out.println("\nIntentando buscar un objeto que no existe...");
+            inventory.findItem("Escudo de Madera"); // Lanza ItemNotFoundException
+        } catch (ItemNotFoundException e) {
+            System.out.println("[excepcion]: " + e.getMessage());
         }
 
-        // HABILIDADES
-        System.out.println("\n=== HABILIDADES ===");
 
-        mage.castSpell(warrior);
-        archer.rangedAttack(warrior);
-        priest.heal(warrior);
+        // 2. DEMOSTRACIÓN DE EXCEPCIONES DE ESTADO DE PERSONAJE
+        System.out.println("\n--- 2. prueba de Estados Invalidos de Personaje ---");
+        try {
+            Warrior warrior = new Warrior("Aragorn");
+            Mage mage = new Mage("Gandalf");
 
-        // USO POLIMÓRFICO DE ITEMS
-        System.out.println("\n=== POLIMORFISMO DE ITEMS ===");
+            System.out.println("simulando que el guerrero cae derrotado...");
+            warrior.receiveDamage(200);
 
-        List<Item> items = new ArrayList<>();
+            System.out.println("intentando que el guerrero muerto ataque (debe lanzar InvalidCharacterStateException)...");
+            warrior.attack(mage); // Lanza InvalidCharacterStateException
 
-        items.add(sword);
-        items.add(armor);
-        items.add(potion);
-        items.add(ring);
-        items.add(food);
-
-        for (Item item : items) {
-            item.use(warrior);
+        } catch (InvalidCharacterStateException e) {
+            System.out.println("[excepcion]: " + e.getMessage());
         }
 
-        // MISIÓN
-        System.out.println("\n=== MISIÓN ===");
+        try {
+            Warrior warrior = new Warrior("Boromir");
+            Priest priest = new Priest("Elrond");
 
-        Quest quest = new Quest(
-                1,
-                "El Castillo Perdido",
-                "Explorar el castillo y recuperar el tesoro.",
-                Difficulty.HARD,
-                500,
-                1000
-        );
+            warrior.receiveDamage(200); // Boromir muere
 
-        // AGREGACIÓN
-        quest.addParticipant(warrior);
-        quest.addParticipant(mage);
-        quest.addParticipant(archer);
-        quest.addParticipant(priest);
+            System.out.println("\nintentando curar a un personaje muerto...");
+            priest.heal(warrior); // Lanza InvalidCharacterStateException
 
-        quest.showParticipants();
-
-        // OBJETIVOS
-        QuestObjective objective1 =
-                new QuestObjective("Derrotar enemigos", 5);
-
-        QuestObjective objective2 =
-                new QuestObjective("Encontrar la llave", 1);
-
-        QuestObjective objective3 =
-                new QuestObjective("Recuperar el tesoro", 1);
-
-        quest.addObjective(objective1);
-        quest.addObjective(objective2);
-        quest.addObjective(objective3);
-
-        quest.showObjectives();
-
-        // ACTUALIZAR OBJETIVOS
-        System.out.println("\n=== ACTUALIZANDO OBJETIVOS ===");
-
-        objective1.updateProgress(5);
-        objective2.updateProgress(1);
-        objective3.updateProgress(1);
-
-        quest.showObjectives();
-
-        // COMPLETAR MISIÓN
-        quest.updateQuestStatus();
-
-        if (quest.isCompleted()) {
-            quest.completeQuest();
+        } catch (InvalidCharacterStateException e) {
+            System.out.println("[excepcion]: " + e.getMessage());
         }
 
-        System.out.println("\n===== FIN DEL PROGRAMA =====");
+
+        // 3. DEMOSTRACIÓN DEL REPOSITORIO GENÉRICO CON OTRAS ENTIDADES
+        System.out.println("\n--- 3. prueba de Repository<T> con Personajes ---");
+        Repository<Character> party = new Repository<>();
+        Warrior warrior = new Warrior("Conan");
+        Mage mage = new Mage("Merlin");
+
+        party.add(warrior);
+        party.add(mage);
+
+        System.out.println("numero de miembros en el grupo: " + party.size());
+        
+        // Uso del método genérico de búsqueda por criterio (Predicate)
+        Character encontrado = party.findByCriteria(c -> c.getName().equalsIgnoreCase("Merlin"));
+        if (encontrado != null) {
+            System.out.println("Personaje encontrado mediante el metodo generico: " + encontrado.getName());
+        }
+
+        System.out.println("fin de las pruebas!");
+ 
     }
 }

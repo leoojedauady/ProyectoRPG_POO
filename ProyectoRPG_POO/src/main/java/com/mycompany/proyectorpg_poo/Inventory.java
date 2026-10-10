@@ -4,13 +4,10 @@
  */
 package com.mycompany.proyectorpg_poo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Inventory {
 
     private int capacity;
-    private List<Item> items;
+    private Repository<Item> items; // Se reemplaza List<Item> por Repository<Item>
     private int gold;
     private double weight;
     private double maxWeight;
@@ -18,56 +15,68 @@ public class Inventory {
     public Inventory(int capacity, double maxWeight) {
         this.capacity = capacity;
         this.maxWeight = maxWeight;
-        this.items = new ArrayList<>();
+        this.items = new Repository<>();
         this.gold = 0;
         this.weight = 0;
     }
 
-    public boolean addItem(Item item) {
+    /**
+     * Agrega un objeto al inventario.
+     * 
+     * @param item Objeto a agregar.
+     * @throws InventoryFullException Si el inventario está lleno o supera el peso máximo.
+     */
+    public void addItem(Item item) throws InventoryFullException {
         if (item == null) {
-            return false;
+            return;
         }
 
         if (isFull()) {
-            System.out.println("Inventario lleno.");
-            return false;
+            throw new InventoryFullException("El inventario esta lleno. Capacidad maxima: " + capacity);
         }
 
         if (weight + item.getWeight() > maxWeight) {
-            System.out.println("El objeto supera el peso máximo.");
-            return false;
+            throw new InventoryFullException("El objeto '" + item.getName() + "' supera el peso maximo permitido (" + maxWeight + ").");
         }
 
         items.add(item);
         weight += item.getWeight();
 
-        System.out.println(item.getName() + " añadido al inventario.");
-        return true;
+        System.out.println(item.getName() + " agregado al inventario.");
     }
 
-    public boolean removeItem(Item item) {
-        if (items.remove(item)) {
-            calculateWeight();
-            return true;
+    /**
+     * Elimina un objeto del inventario.
+     * 
+     * @param item Objeto a eliminar.
+     * @throws ItemNotFoundException Si el objeto no existe en el inventario.
+     */
+    public void removeItem(Item item) throws ItemNotFoundException {
+        if (!items.remove(item)) {
+            throw new ItemNotFoundException("El objeto no se encuentra en el inventario.");
         }
-
-        return false;
+        calculateWeight();
     }
 
-    public Item findItem(String name) {
-        for (Item item : items) {
-            if (item.getName().equalsIgnoreCase(name)) {
-                return item;
-            }
+    /**
+     * Busca un objeto por su nombre aprovechando el método genérico por criterio.
+     * 
+     * @param name Nombre del objeto a buscar.
+     * @return El objeto encontrado.
+     * @throws ItemNotFoundException Si no se encuentra el objeto.
+     */
+    public Item findItem(String name) throws ItemNotFoundException {
+        Item found = items.findByCriteria(item -> item.getName().equalsIgnoreCase(name));
+        if (found == null) {
+            throw new ItemNotFoundException("El objeto '" + name + "' no fue encontrado en el inventario.");
         }
-
-        return null;
+        return found;
     }
 
     public void showItems() {
         System.out.println("\n--- INVENTARIO ---");
 
-        for (Item item : items) {
+        for (Item item : items.getAll()) {
             item.showInfo();
         }
 
@@ -78,7 +87,7 @@ public class Inventory {
     public double calculateWeight() {
         weight = 0;
 
-        for (Item item : items) {
+        for (Item item : items.getAll()) {
             weight += item.getWeight();
         }
 
@@ -102,5 +111,22 @@ public class Inventory {
         }
 
         return false;
+    }
+
+    // Getters
+    public int getGold() {
+        return gold;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public double getMaxWeight() {
+        return maxWeight;
+    }
+
+    public int getCapacity() {
+        return capacity;
     }
 }
