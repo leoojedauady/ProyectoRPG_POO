@@ -10,7 +10,11 @@ public class Mage extends Character implements MagicCaster {
     private int maxMana;
 
     public Mage(String name) {
-        super(name, 1, 100, 10, 5);
+        this(name, 1, 100);
+    }
+
+    public Mage(String name, int level, int maxHealth) {
+        super(name, level, maxHealth, 10, 5);
         this.maxMana = 120;
         this.mana = maxMana;
     }
@@ -61,5 +65,23 @@ public class Mage extends Character implements MagicCaster {
     @Override
     public void defend(int damage) throws InvalidCharacterStateException {
         receiveDamage(damage);
+    }
+
+    public int getMana() {
+        return mana;
+    }
+
+    public int getMaxMana() {
+        return maxMana;
+    }
+
+    @Override
+    public String getCharacterType() {
+        return "Mage";
+    }
+
+    @Override
+    public String getSpecificInfo() {
+        return "Maná: " + mana + "/" + maxMana;
     }
 }

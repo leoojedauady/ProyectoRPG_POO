@@ -4,6 +4,8 @@
  */
 package com.mycompany.proyectorpg_poo;
 
+import java.util.List;
+
 public class Inventory {
 
     private int capacity;
@@ -128,5 +130,13 @@ public class Inventory {
 
     public int getCapacity() {
         return capacity;
+    }
+
+    public List<Item> getItems() {
+        return items.getAll();
+    }
+
+    public int getItemCount() {
+        return items.size();
     }
 }

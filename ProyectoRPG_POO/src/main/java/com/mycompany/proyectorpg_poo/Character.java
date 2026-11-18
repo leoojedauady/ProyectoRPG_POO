@@ -38,6 +38,13 @@ public abstract class Character implements Lootable {
 
     public abstract void defend(int damage) throws InvalidCharacterStateException;
 
+    public abstract String getCharacterType();
+
+    // cada clase lo sobreescribe con lo suyo (mana, flechas, etc)
+    public String getSpecificInfo() {
+        return "Sin información adicional";
+    }
+
     public void levelUp() {
         level++;
         maxHealth += 20;
@@ -109,6 +116,10 @@ public abstract class Character implements Lootable {
         return name;
     }
 
+    public int getLevel() {
+        return level;
+    }
+
     public int getHealth() {
         return health;
     }
@@ -133,5 +144,10 @@ public abstract class Character implements Lootable {
     @Override
     public void receiveGold(int amount) {
         inventory.addGold(amount);
+    }
+
+    @Override
+    public String toString() {
+        return name + " (" + getCharacterType() + ")";
     }
 }

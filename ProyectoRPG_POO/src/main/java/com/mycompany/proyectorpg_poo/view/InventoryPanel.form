@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="3"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lblCharacter" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="cmbCharacter" min="-2" pref="200" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="lblSummary" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="pnlAdd" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblItems" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" alignment="0" pref="420" max="32767" attributes="0"/>
+                          <Component id="btnRemove" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblCharacter" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmbCharacter" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblSummary" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="pnlAdd" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lblItems" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" pref="330" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnRemove" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="lblCharacter">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Personaje:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmbCharacter">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbCharacterActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Character&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblSummary">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="No hay personajes registrados."/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JPanel" name="pnlAdd">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder title="Agregar objeto"/>
+          </Border>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblItemType" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="lblItemName" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="lblItemValue" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cmbItemType" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtItemName" alignment="0" pref="150" max="32767" attributes="0"/>
+                              <Component id="spnItemValue" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Component id="pnlWeapon" alignment="0" max="32767" attributes="0"/>
+                      <Component id="pnlArmor" alignment="0" max="32767" attributes="0"/>
+                      <Component id="pnlPotion" alignment="0" max="32767" attributes="0"/>
+                      <Component id="pnlAccessory" alignment="0" max="32767" attributes="0"/>
+                      <Component id="pnlConsumable" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnAdd" alignment="1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblItemType" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmbItemType" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblItemName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtItemName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblItemValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnItemValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="pnlWeapon" min="-2" max="-2" attributes="0"/>
+                  <Component id="pnlArmor" min="-2" max="-2" attributes="0"/>
+                  <Component id="pnlPotion" min="-2" max="-2" attributes="0"/>
+                  <Component id="pnlAccessory" min="-2" max="-2" attributes="0"/>
+                  <Component id="pnlConsumable" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="btnAdd" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="lblItemType">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Tipo de objeto:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cmbItemType">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="5">
+                <StringItem index="0" value="Weapon"/>
+                <StringItem index="1" value="Armor"/>
+                <StringItem index="2" value="Potion"/>
+                <StringItem index="3" value="Accessory"/>
+                <StringItem index="4" value="Consumable"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbItemTypeActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblItemName">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nombre:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtItemName">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblItemValue">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Valor:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JSpinner" name="spnItemValue">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="10" maximum="9999" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Container class="javax.swing.JPanel" name="pnlWeapon">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblWeaponWeight" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="lblWeaponDamage" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="lblWeaponType" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txtWeaponWeight" alignment="0" max="32767" attributes="0"/>
+                          <Component id="spnWeaponDamage" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtWeaponType" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblWeaponWeight" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtWeaponWeight" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblWeaponDamage" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="spnWeaponDamage" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblWeaponType" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtWeaponType" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="lblWeaponWeight">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Peso:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtWeaponWeight">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="3.0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblWeaponDamage">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Daño:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSpinner" name="spnWeaponDamage">
+              <Properties>
+                <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                  <SpinnerModel initial="10" maximum="999" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblWeaponType">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tipo de arma:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtWeaponType">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Espada"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="pnlArmor">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblArmorWeight" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="lblArmorDefense" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="lblArmorType" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txtArmorWeight" alignment="0" max="32767" attributes="0"/>
+                          <Component id="spnArmorDefense" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtArmorType" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblArmorWeight" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtArmorWeight" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblArmorDefense" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="spnArmorDefense" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblArmorType" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtArmorType" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="lblArmorWeight">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Peso:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtArmorWeight">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="5.0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblArmorDefense">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Defensa:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSpinner" name="spnArmorDefense">
+              <Properties>
+                <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                  <SpinnerModel initial="10" maximum="999" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblArmorType">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tipo de armadura:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtArmorType">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ligera"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="pnlPotion">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblEffectType" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="lblEffectValue" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="cmbEffectType" alignment="0" max="32767" attributes="0"/>
+                          <Component id="spnEffectValue" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblEffectType" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmbEffectType" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblEffectValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="spnEffectValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="lblEffectType">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tipo de efecto:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cmbEffectType">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="3">
+                    <StringItem index="0" value="health"/>
+                    <StringItem index="1" value="mana"/>
+                    <StringItem index="2" value="strength"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblEffectValue">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Valor de recuperación:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSpinner" name="spnEffectValue">
+              <Properties>
+                <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                  <SpinnerModel initial="30" maximum="999" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="pnlAccessory">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblBonusHealth" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="lblBonusMana" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="lblBonusStrength" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="lblBonusDefense" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="spnBonusHealth" alignment="0" max="32767" attributes="0"/>
+                          <Component id="spnBonusMana" alignment="0" max="32767" attributes="0"/>
+                          <Component id="spnBonusStrength" alignment="0" max="32767" attributes="0"/>
+                          <Component id="spnBonusDefense" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblBonusHealth" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="spnBonusHealth" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblBonusMana" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="spnBonusMana" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblBonusStrength" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="spnBonusStrength" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblBonusDefense" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="spnBonusDefense" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="lblBonusHealth">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bonus de salud:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSpinner" name="spnBonusHealth">
+              <Properties>
+                <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                  <SpinnerModel initial="0" maximum="999" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblBonusMana">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bonus de maná:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSpinner" name="spnBonusMana">
+              <Properties>
+                <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                  <SpinnerModel initial="0" maximum="999" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblBonusStrength">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bonus de fuerza:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSpinner" name="spnBonusStrength">
+              <Properties>
+                <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                  <SpinnerModel initial="0" maximum="999" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblBonusDefense">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bonus de defensa:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSpinner" name="spnBonusDefense">
+              <Properties>
+                <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                  <SpinnerModel initial="0" maximum="999" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="pnlConsumable">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblConsumableEffect" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txtConsumableEffect" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblConsumableEffect" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtConsumableEffect" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="lblConsumableEffect">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Efecto:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtConsumableEffect">
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JButton" name="btnAdd">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Agregar objeto"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JLabel" name="lblItems">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Objetos del inventario:"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTable" name="tblItems">
+          <Properties>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+              <Table columnCount="5" rowCount="0">
+                <Column editable="false" title="ID" type="java.lang.Object"/>
+                <Column editable="false" title="Nombre" type="java.lang.Object"/>
+                <Column editable="false" title="Tipo" type="java.lang.Object"/>
+                <Column editable="false" title="Peso" type="java.lang.Object"/>
+                <Column editable="false" title="Valor" type="java.lang.Object"/>
+              </Table>
+            </Property>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JButton" name="btnRemove">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Eliminar objeto seleccionado"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRemoveActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>

@@ -42,18 +42,43 @@ public class Quest {
         this.objectives = new ArrayList<>();
     }
 
-    public void addParticipant(Character character) {
-        if (character != null && !participants.contains(character)) {
-            participants.add(character);
-            status = Status.IN_PROGRESS;
-
-            System.out.println(character.getName() +
-                    " se unió a la misión.");
+    public void addParticipant(Character character) throws InvalidQuestOperationException {
+        if (character == null) {
+            throw new InvalidQuestOperationException("No se especificó un personaje para la misión.");
         }
+        if (isFinished()) {
+            throw new InvalidQuestOperationException("No se pueden agregar participantes a una misión con estado " + status + ".");
+        }
+        if (participants.contains(character)) {
+            throw new InvalidQuestOperationException(character.getName() + " ya participa en la misión '" + name + "'.");
+        }
+
+        participants.add(character);
+        status = Status.IN_PROGRESS;
+
+        System.out.println(character.getName() +
+                " se unió a la misión.");
     }
 
-    public void removeParticipant(Character character) {
-        participants.remove(character);
+    // solo se quita de la lista, el personaje sigue existiendo (agregación)
+    public void removeParticipant(Character character) throws InvalidQuestOperationException {
+        if (isFinished()) {
+            throw new InvalidQuestOperationException("No se pueden quitar participantes de una misión con estado " + status + ".");
+        }
+        if (!participants.remove(character)) {
+            throw new InvalidQuestOperationException("El personaje no participa en la misión '" + name + "'.");
+        }
+
+        if (participants.isEmpty()) {
+            status = Status.AVAILABLE;
+        }
+
+        System.out.println(character.getName() +
+                " abandonó la misión.");
+    }
+
+    public boolean isFinished() {
+        return status == Status.COMPLETED || status == Status.FAILED;
     }
 
     public void showParticipants() {
@@ -90,15 +115,25 @@ public class Quest {
         return true;
     }
 
-    public void completeQuest() {
-        if (isCompleted()) {
-            status = Status.COMPLETED;
-            giveRewards();
+    public void completeQuest() throws InvalidQuestOperationException {
+        if (status != Status.IN_PROGRESS) {
+            throw new InvalidQuestOperationException("Solo se puede completar una misión en progreso. Estado actual: " + status + ".");
         }
+        if (!objectives.isEmpty() && !isCompleted()) {
+            throw new InvalidQuestOperationException("La misión todavía tiene objetivos pendientes.");
+        }
+
+        status = Status.COMPLETED;
+        giveRewards();
     }
 
-    public void failQuest() {
+    public void failQuest() throws InvalidQuestOperationException {
+        if (isFinished()) {
+            throw new InvalidQuestOperationException("La misión ya terminó con estado " + status + ".");
+        }
+
         status = Status.FAILED;
+        System.out.println("La misión '" + name + "' ha fallado.");
     }
 
     public void giveRewards() {
@@ -117,5 +152,37 @@ public class Quest {
         for (QuestObjective objective : objectives) {
             objective.showProgress();
         }
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public int getExperienceReward() {
+        return experienceReward;
+    }
+
+    public int getGoldReward() {
+        return goldReward;
+    }
+
+    public List<Character> getParticipants() {
+        return new ArrayList<>(participants);
     }
 }

@@ -9,7 +9,11 @@ public class Warrior extends Character {
     private Weapon weapon;
 
     public Warrior(String name) {
-        super(name, 1, 150, 20, 12);
+        this(name, 1, 150);
+    }
+
+    public Warrior(String name, int level, int maxHealth) {
+        super(name, level, maxHealth, 20, 12);
     }
 
     public void equipWeapon(Weapon weapon) {
@@ -45,5 +49,15 @@ public class Warrior extends Character {
 
     public Weapon getWeapon() {
         return weapon;
+    }
+
+    @Override
+    public String getCharacterType() {
+        return "Warrior";
+    }
+
+    @Override
+    public String getSpecificInfo() {
+        return "Arma equipada: " + (weapon != null ? weapon.getName() : "ninguna");
     }
 }

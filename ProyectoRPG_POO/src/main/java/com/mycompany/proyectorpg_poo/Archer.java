@@ -15,7 +15,11 @@ public class Archer extends Character implements RangedAttacker {
     private int range;
 
     public Archer(String name) {
-        super(name, 1, 110, 17, 7);
+        this(name, 1, 110);
+    }
+
+    public Archer(String name, int level, int maxHealth) {
+        super(name, level, maxHealth, 17, 7);
         this.arrows = 10;
         this.range = 30;
     }
@@ -62,5 +66,19 @@ public class Archer extends Character implements RangedAttacker {
     @Override
     public void defend(int damage) throws InvalidCharacterStateException {
         receiveDamage(damage);
+    }
+
+    public int getArrows() {
+        return arrows;
+    }
+
+    @Override
+    public String getCharacterType() {
+        return "Archer";
+    }
+
+    @Override
+    public String getSpecificInfo() {
+        return "Flechas: " + arrows + " | Alcance: " + range + " m";
     }
 }

@@ -34,11 +34,23 @@ public abstract class Item {
         );
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public double getWeight() {
         return weight;
+    }
+
+    public int getValue() {
+        return value;
     }
 }

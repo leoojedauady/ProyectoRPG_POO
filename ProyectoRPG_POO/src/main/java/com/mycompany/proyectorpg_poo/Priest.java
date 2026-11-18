@@ -7,7 +7,16 @@ package com.mycompany.proyectorpg_poo;
 public class Priest extends Character implements Healable {
 
     public Priest(String name) {
-        super(name, 1, 100, 8, 8);
+        this(name, 1, 100);
+    }
+
+    public Priest(String name, int level, int maxHealth) {
+        super(name, level, maxHealth, 8, 8);
+    }
+
+    @Override
+    public String getCharacterType() {
+        return "Priest";
     }
 
     @Override
