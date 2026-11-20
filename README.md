@@ -1,6 +1,8 @@
 # Proyecto RPG (Mija y Leo)
 _Hecho con Java Maven y NetBeans_
 
+Última versión: ADA 05 - Serialización (Persistencia)
+
 **Integrantes**
 - Leonardo Ojeda Vales
 - Mijail Manrique
